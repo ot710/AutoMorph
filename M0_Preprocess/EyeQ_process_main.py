@@ -14,7 +14,7 @@ def process(image_list, save_path):
     list_resolution = []
     scale_resolution = []
     
-    resolution_list = pd.read_csv('resolution_information.csv')
+    resolution_list = pd.read_csv('../resolution_information.csv')
     raw_img_dir = '/NVME/decrypted/ukbb/fundus/raw/CLRIS/'
     crop_img_dir = '/NVME/decrypted/ukbb/fundus/raw/CLRIS_cropped/'
     
@@ -38,8 +38,8 @@ def process(image_list, save_path):
     scale_list = [a*2/912 for a in radius_list]
     scale_resolution = [a*b*1000 for a,b in zip(list_resolution,scale_list)]
     Data4stage2 = pd.DataFrame({'Name':name_list, 'centre_w':centre_list_w, 'centre_h':centre_list_h, 'radius':radius_list, 'Scale':scale_list, 'Scale_resolution':scale_resolution})
-    Data4stage2.to_csv('/NVME/decrypted/scratch/ukbb_fundus_crop/crop_info_run2.csv', index = None, encoding='utf8')
-    
+    Data4stage2.to_csv('/NVME/decrypted/scratch/olga/ukbb_fundus_crop/crop_info_run2.csv', index = None, encoding='utf8')
+
     print('END OF SCRIPT')
 
 
